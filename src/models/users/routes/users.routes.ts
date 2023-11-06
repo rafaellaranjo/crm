@@ -21,7 +21,6 @@ usersRouter.post(
       name: Joi.string().required(),
       email: Joi.string().email().required(),
       password: Joi.string().required(),
-      whatsapp: Joi.string(),
     },
   }),
   usersController.create,

@@ -8,29 +8,15 @@ interface IRequest {
   name: string;
   email: string;
   password: string;
-  whatsapp: string;
 }
 
 class CreateUserService {
-  public async execute({
-    name,
-    email,
-    password,
-    whatsapp,
-  }: IRequest): Promise<User> {
+  public async execute({ name, email, password }: IRequest): Promise<User> {
     const usersRepository = getCustomRepository(UsersRepository);
     const emailExists = await usersRepository.findByEmail(email);
 
     if (emailExists) {
       throw new AppError('Email já está sendo utilizado em outra conta.');
-    }
-
-    const whatsappExists = await usersRepository.findByWhatsapp(whatsapp);
-
-    if (whatsappExists) {
-      throw new AppError(
-        'Este celular já está sendo utilizado em outra conta.',
-      );
     }
 
     const hashedPassword = await hash(password, 8);
@@ -39,7 +25,6 @@ class CreateUserService {
       name,
       email,
       password: hashedPassword,
-      whatsapp,
     });
 
     await usersRepository.save(user);
