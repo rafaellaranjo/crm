@@ -19,10 +19,6 @@ class UsersRepository extends Repository<User> {
     return await this.findOne({ password });
   }
 
-  public async findByWhatsapp(whatsapp: string): Promise<User | undefined> {
-    return await this.findOne({ whatsapp });
-  }
-
   public async findByEmailAndPassword(
     email: string,
     password: string,
