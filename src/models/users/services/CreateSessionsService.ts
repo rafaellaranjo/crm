@@ -42,6 +42,8 @@ class CreateSessionsService {
       },
     );
 
+    console.log('token => ' + token);
+
     return { user, token };
   }
 }
