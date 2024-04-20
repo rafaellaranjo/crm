@@ -1,4 +1,4 @@
-# timetable_psycho
+# crm
 
 Para inicializar o projeto, siga as etapas abaixo:
 
